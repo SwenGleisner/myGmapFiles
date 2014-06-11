@@ -1,0 +1,68 @@
+body{
+	font-size: 13px !important;
+}
+
+#gmap_maincontainer{
+	height: 100%;
+}
+
+#dir_gm_mapdiv{
+	min-height: 300px;
+}
+
+.ll_panel-body {
+    padding: 5px 0px !important;
+	border-bottom: 1px solid rgba(204,204,204,0.75);
+}
+
+.ll_panellist {
+
+}
+
+.panel-footer{
+	background-image: linear-gradient(to bottom, #428BCA 0%, #357EBD 100%) !important;
+    background-repeat: repeat-x !important;
+}
+.ll_locationname{
+	font-weight: bold !important;
+}
+
+.ll_locationaddress{
+	font-size: 12px !important;
+}
+
+.loc_detailtable th, .loc_detailtable td {
+	padding: 5px !important;
+	text-align:center;
+}
+
+.dv_inputgroup{
+	font-size: 12px !important;
+    height: 26px !important;
+    padding: 3px 12px !important;
+}
+
+.dv_li{
+	font-size: 12px !important;
+}
+
+.mypaginator{
+	text-align: center;
+}
+
+.wellsearch{
+	margin: auto;
+	padding: 0px 5px !important;
+}
+
+.locationsearchplaceholder{
+	color: #000 !important;
+}
+
+.roadsign{
+	padding: 5px 0px;
+}
+
+.glyphroad{
+	padding-top: 3px !important;
+}

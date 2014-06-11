@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="module" client="site" method="upgrade">
+	<name>_mygmap</name>
+	<author>Swen Gleisner</author>
+	<creationDate>2014</creationDate>
+	<copyright>Copyright (C) 2014</copyright>
+	<license>GNU/GPL</license>
+	<authorEmail>swengleisner@gmx.de</authorEmail>
+	<authorUrl> - </authorUrl>
+	<version>0.1</version>
+	<description>GoogleMapsModule</description>
+	<files>
+		<filename module="mod_mygmap">mod_mygmap.php</filename>
+		<filename>css/font-awesome.min.css</filename>
+		<filename>css/perfect-scrollbar.css</filename>
+		<filename>fonts/FontAwesome.otf</filename>
+		<filename>fonts/fontawesome-webfont.eot</filename>
+		<filename>fonts/fontawesome-webfont.svg</filename>
+		<filename>fonts/fontawesome-webfont.ttf</filename>
+		<filename>fonts/fontawesome-webfont.woff</filename>
+		<filename>images/index.html</filename>
+		<filename>js/app.js</filename>
+		<filename>js/controllers.js</filename>
+		<filename>js/directives.js</filename>
+		<filename>js/filters.js</filename>
+		<filename>js/services.js</filename>
+		<filename>lib/jquery.mousewheel.js</filename>
+		<filename>lib/perfect-scrollbar.js</filename>
+		<filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>css</folder>
+		<folder>fonts</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>languages</folder>
+		<folder>lib</folder>
+		<folder>partials</folder>
+		<folder>tmpl</folder>
+	</files>
+	<languages folder="languages">
+		<language tag="de-DE">de-DE.mod_mygmap.ini</language>
+		<language tag="de-DE">de-DE.mod_mygmap.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="field1" type="text" label="Demo Field 1" default="Field 1" description="Description for field 1" />
+				<field name="field2" type="text" label="Demo Field 2" default="Field 2" description="Description for field 2" />
+				<field name="field3" type="radio" label="Demo Field 3" default="1" description="Description for field 3">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
