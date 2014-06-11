@@ -1,0 +1,76 @@
+<hr />
+<div ng-show="showalert" class="alert width750" ng-class="alertaction">
+	<button type="button" 
+    	    class="close" 
+            ng-click="showalert=!showalert">&times;</button>
+	<p>{{alertstring}}</p>
+</div>
+<legend ng-init="init()"class="btn-primary legendservice width750"> <i class="icon-list marginleft3" ></i> | Location-Directory </legend>
+<paginator></paginator>
+<div ng-init="showdelete = false" class="spinner width750" ng-show="loading">
+    <p>&nbsp;</p>
+    <img src="modules/mod_mygmapadmin/css/images/spinner.png" width="233" height="20"/> </div>
+<table class="table-condensed tbllocation table-hover" ng-init="sortorder = 'locationname'; reverse=!!reverse">
+    <thead>
+        <tr class="btn-primary">
+            <th class="tbllocation20">SC</th>
+            <th class="tbllocation20">SP</th>
+            <th class="tbllocation20">BK</th>
+            <th ng-click="sortorder = 'locationname'; reverse=!reverse" class="tbllocation250"> Locationname <i ng-class="{'icon-hand-up icon-white pull-right': sortorder == 'locationname' && !reverse,
+                			  'icon-hand-down icon-white pull-right': sortorder == 'locationname' && reverse }"></i> </th>
+            <th ng-click="sortorder = 'zipcode'; reverse=!reverse" class="tbllocation50"> Plz <i ng-class="{'icon-hand-up icon-white pull-right': sortorder == 'zipcode' && !reverse,
+                  'icon-hand-down icon-white pull-right': sortorder == 'zipcode' && reverse }"></i> </th>
+            <th ng-click="sortorder = 'locality'; reverse=!reverse" class="tbllocation175"> Ort <i ng-class="{'icon-hand-up icon-white pull-right': sortorder == 'locality' && !reverse,
+                  'icon-hand-down icon-white pull-right': sortorder == 'locality' && reverse }"></i> </th>
+            <th class="tbllocation100"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="location in allLocation | orderBy:sortorder:reverse | paginate">
+            <td class="tbllocation20"><i ng-class="{'icon-ok tbllocationhascategory': hasCategory('0',location.categories),
+                              'icon-remove tbllocationhasnotcategory': !hasCategory('0',location.categories)}" > </i></td>
+            <td class="tbllocation20"><i ng-class="{'icon-ok tbllocationhascategory': hasCategory('1',location.categories),
+                              'icon-remove tbllocationhasnotcategory': !hasCategory('1',location.categories)}" > </i></td>
+            <td class="tbllocation20"><i ng-class="{'icon-ok tbllocationhascategory': hasCategory('2',location.categories),
+                              'icon-remove tbllocationhasnotcategory': !hasCategory('2',location.categories)}" > </i></td>
+            <td class="tbllocation250">{{location.locationname}}</td>
+            <td class="tbllocation50">{{location.zipcode}}</td>
+            <td class="tbllocation175">{{location.locality}}</td>
+            <td class="tbllocation100">
+            	<a ng-click="showDelete(location)" class="btn btn-mini btn-danger pull-left " > 
+            		<i class="icon-remove icon-white"></i> 
+                </a> 
+                <a ng-click="clickSelectLocation(location)" href="#/locationmanagerNewLocation" class="btn btn-mini btn-primary pull-left tbllocationbtnmargin5" > 
+                	<i class="icon-pencil icon-white"></i> 
+                </a> 
+                <a ng-click="showLocationDetails(location)" class="btn btn-mini btn-primary pull-left " > 
+                	<i class="icon-folder-open icon-white"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<paginator></paginator>
+<locationdetail servicecategories="locationServiceCategories" showmodal="showModal" location="selectedLocation"></locationdetail>
+
+<!-- MODAL REALLY DELETE -->
+<div ng-class="{'show fade-in': showdelete,
+                'hide fade-out': !showdelete}"
+     class="modal locationmodal" tabindex="-1" role="dialog">
+    <div class="modal-header btn-primary">
+        <button type="button" class="btn btn-primary pull-right" ng-click="showdelete = !showdelete" aria-hidden="true"><i class="icon-remove-sign icon-white"></i></button>
+        <h3 id="myModalLabel">{{locationToDelete.locationname}}</h3>
+    </div>
+    <div class="modal-body locationmodalbody">
+        <div class="alert-danger" ng-class="alertaction">
+            <h4>{{locationToDelete.alertstring}}</h4>
+        </div>    	
+    </div>
+    <div class="modal-footer btn-primary">
+        <button class="btn btn-danger" aria-hidden="true" ng-click="showdelete = !showdelete">abbrechen</button>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="clickDeleteLocation(locationToDelete);showdelete = !showdelete">Location löschen</button>
+    </div>
+</div>
+<div ng-class="{'modal-backdrop fade-in': showdelete,
+                'hide fade-out': !showdelete}"
+     ng-click="showdelete = !showdelete"></div>

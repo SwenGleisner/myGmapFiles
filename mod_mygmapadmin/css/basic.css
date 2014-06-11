@@ -1,0 +1,361 @@
+#gmap_maincontainer{
+background: rgb(40,52,59);
+background: -moz-linear-gradient(top,  rgba(40,52,59,1) 0%, rgba(130,140,149,1) 64%, rgba(181,189,200,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(40,52,59,1)), color-stop(64%,rgba(130,140,149,1)), color-stop(100%,rgba(181,189,200,1)));
+background: -webkit-linear-gradient(top,  rgba(40,52,59,1) 0%,rgba(130,140,149,1) 64%,rgba(181,189,200,1) 100%);
+background: -o-linear-gradient(top,  rgba(40,52,59,1) 0%,rgba(130,140,149,1) 64%,rgba(181,189,200,1) 100%);
+background: -ms-linear-gradient(top,  rgba(40,52,59,1) 0%,rgba(130,140,149,1) 64%,rgba(181,189,200,1) 100%);
+background: linear-gradient(to bottom,  rgba(40,52,59,1) 0%,rgba(130,140,149,1) 64%,rgba(181,189,200,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28343b', endColorstr='#b5bdc8',GradientType=0 );
+
+
+
+	width: 100%;
+	height: 100%;
+}
+.mybrand {
+	font-weight: bold;
+	font-size: 14px;
+	margin-top: 7px;
+	text-indent: 7px;
+	color: #FFF;
+}
+
+.catmanagermenu {
+	list-style-type: none;
+	display: inline;
+}
+
+.tblservices {
+	text-shadow: 0 0 3px #FFFFFF;
+	max-width: 100% !important;
+	margin: auto !important;
+	margin-top: 20px!important;
+	text-align:left!important;
+	border: 2px solid #1D6CB0;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #333;
+	padding: 10px;
+	border-collapse: separate !important;
+	color: #000 !important;
+}
+
+.tblcontacs {
+	table-layout: fixed;
+	text-shadow: 0 0 3px #FFFFFF;
+	font-size: 12px;
+	max-width: 100% !important;
+	margin-top: 20px!important;
+	margin-bottom: 20px!important;
+	text-align:left!important;
+	border: 2px solid #1D6CB0;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #333;
+	padding: 10px;
+	border-collapse: separate !important;
+	color: #000 !important;
+}
+
+.tblcontacs td {
+	word-wrap: break-word;
+	vertical-align: top;
+	border-top: 1px solid #1D6CB0;
+}
+
+.tblservices th{
+	border-bottom: 2px solid #1D6CB0;
+	font-size: 13px;
+	color: #000 !important;
+}
+
+.tblservices td{
+	border-top: 1px solid  #1D6CB0 !important;
+}
+
+.legendservice {
+	margin-bottom: 0px !important;
+}
+
+.wellservice {
+	border: 1px solid #1D6CB0 !important;
+	border-radius: 0 0 4px 4px !important;
+	background: none repeat scroll 0 0 rgba(192, 192, 192, 0.5) !important;
+}
+
+.width700{
+	width: 688px;
+	margin-auto: !important;
+}
+
+.width750{
+	width: 728px;
+	margin: auto;
+}
+
+.locationinpuwidth115{
+	width: 115px !important;
+}
+.locationinpuwidth620{
+	width: 620px !important;
+}
+
+.add-on-width {
+	width: 100px !important;
+	text-align:left !important;
+	font-weight: bold !important;
+}
+
+.locationinputwidth-xl {
+	width: 563px !important;
+}
+.locationinputwidth-l {
+	width: 450px !important;
+}
+
+.locationinputwidth-m {
+	width: 313px !important;
+}
+.locationinputwidth-s {
+	width: 100px !important;
+}
+.locationinputmarginleft{
+	margin-left: 25px !important;
+}
+.locationcategorycontainer {
+	floar: left;
+	position: relative;
+}
+
+.input178 {
+	width: 178px !important;
+}
+
+.div50 {
+	width: 50px;
+	float: left;
+}
+
+.servicehead250 {
+	width: 250px;
+}
+.servicehead50 {
+	width: 50px;
+}
+.servicehead100 {
+	width: 100px;
+}
+.servicehead150 {
+	width: 150px;
+}
+.servicehead75 {
+	width: 50px;
+	float: left;
+}
+
+.servicehead75 {
+	width: 75px;
+	float: left;
+}
+
+.div100 {
+	width: 100px;
+	float: left;
+}
+
+.div150 {
+	width: 150px;
+	float: left;
+}
+
+.div200, .servicehead200 {
+	width: 200px;
+	float: left;
+}
+
+.div250 {
+	width: 250px;
+	float: left;
+}
+
+.contact {
+	clear: both;
+	padding-bottom: 15px;
+}
+.marginright10 {
+	margin-right: 10px !important;
+}
+.marginleft3 {
+	margin-left: 10px !important;
+}
+.textalignright {
+	text-align: right !important;
+}
+
+.weekcontainer {
+	max-width: 800px;
+}
+
+.weekdaycontainer {
+    border: 2px solid #1D6CB0;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #808080;
+    float: left;
+    padding: 5px;
+    position: relative;
+    width: 137px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	min-height: 152px;
+}
+
+.weekdaytime {
+	line-height: 25px;
+}
+
+.spinner {
+	text-align: center;
+}
+
+i.tbllocationhasnotcategory, i.tbllocationhascategory {
+    margin-top: 5px !important;
+}
+.tbllocation{
+	table-layout: fixed;
+	text-shadow: 1px 1px 1px rgba(153,153,153,0.8);
+	font-size: 12px;
+	font-weight: bold;
+	margin: auto;
+	margin-top: 20px!important;
+	margin-bottom: 20px!important;
+	text-align:left!important;
+	border: 2px solid #1D6CB0;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #333;
+	padding: 10px;
+	border-collapse: separate !important;
+	width: 715px !important;
+	background: #FFF !important;	
+}
+
+.tbllocation th, .tbllocation  td {
+	padding: 10px 5px !important;
+}
+.table-hover tbody tr:hover > td, .table-hover tbody tr:hover > th {
+    background-color: #CCCCCC !important;
+}
+
+.tbllocation20{
+	width: 20px;
+	text-align: center;
+}
+
+.tbllocation30{
+	width: 30px;
+	text-align: center;
+}
+.tbllocation50{
+	width: 50px;
+}
+
+.tbllocation75{
+	width: 75px;
+}
+
+.tbllocation100{
+	width: 100px;
+}
+
+.tbllocation175{
+	width: 175px;
+}
+
+.tbllocation200{
+	width: 200px;
+}
+
+.tbllocation250{
+	width: 250px;
+}
+
+.tbllocation20,.tbllocation30, .tbllocation50,.tbllocation75,.tbllocation100,
+.tbllocation175,.tbllocation200,.tbllocation250 {
+	border-bottom: 1px solid #000;
+}
+
+.tbllocationbtnmargin5 {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.tbllocationhascategory{
+	color: green;
+}
+
+.tbllocationhasnotcategory{
+	color: red;
+}
+
+.locationmodal{
+	width: 720px !important;
+	margin-left: -360px !important
+}
+
+.locationmodal325{
+	width: 325px;
+	min-height: 300px;
+	padding: 3px;
+	float: left;
+}
+
+.borderright{
+	border-right: 2px solid #000;
+}
+
+.locationmodalcontact {
+	width: 100%;
+	clear: both;
+	padding-top: 5px;
+}
+
+.locheader {
+	padding: 5px;
+}
+
+.locationmodalbody{
+	max-height: 400px !important;	
+}
+
+.tbltimes td:first-child {
+	width: 125px;
+	font-weight: bold;
+}
+
+.modalheaderser {
+	font-weight: bold;
+}
+
+.modal-header {
+	border-radius: 5px 5px 0 0 !important;
+}
+
+legend{
+	padding-top: 8px !important;
+	padding-bottom: 8px !important;
+}
+
+.pagination{
+	margin: auto !important;
+	margin-top: 15px !important;
+	cursor: pointer;
+}
+.pagination i{
+	margin-top: 0px !important;
+}
+
+.pagination > ul > .active > a {
+	background-color: #FFF !important;
+	color: #000 !important;
+	font-weight: bold !important;
+}
+

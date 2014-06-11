@@ -1,0 +1,141 @@
+<hr />
+<div ng-show="showalert" class="alert width750" ng-class="alertaction">
+	<button type="button" 
+    	    class="close" 
+            ng-click="showalert=!showalert">&times;</button>
+	<p>{{alertstring}}</p>
+</div>
+<form name="locationActionForm" 
+	  ng-submit="submitForm(locationActionForm.$valid)"
+      ng-init="init()" 
+      novalidate>
+    <fieldset class="width750">
+        <legend class="btn-primary legendservice">
+        	<i class="icon-folder-close icon-white marginleft3" ></i> 
+            | Location-Kategorien
+            <i ng-class="{'icon-ok tbllocationhascategory marginright10 pull-right': 
+            					categorySelect.ServiceCenter == true || categorySelect.ServicePoint == true || categorySelect.Briefkasten == true, 
+               			  'icon-remove tbllocationhasnotcategory marginright10 pull-right': 
+                          		categorySelect.ServiceCenter == false && categorySelect.ServicePoint == false && categorySelect.Briefkasten == false}"> 
+            </i>
+        </legend>
+        <div class="well wellservice width700">
+            <div class="input-prepend input-append locationcategorycontainer marginright10" ng-repeat="category in myLocationCategories">
+                <span class="add-on" >
+                    <input ng-required="!(categorySelect.ServiceCenter == true || categorySelect.ServicePoint == true || categorySelect.Briefkasten == true)" 
+                     	   ng-model="categorySelect[category.name]" 
+                     	   name="locationcategories" 
+                     	   type="checkbox">
+                </span>
+                <span class="input178 uneditable-input">{{category.name}}</span>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="width750">
+        <legend class="btn-primary legendservice">
+        	<i class="icon-th-list icon-white marginleft3" ></i> 
+            | Location-Daten            
+            <i ng-class="{'icon-ok tbllocationhascategory marginright10 pull-right': 
+                                locationActionForm.locationname.$invalid == false && 
+                                locationActionForm.street.$invalid == false &&
+                                locationActionForm.housenr.$invalid == false &&
+                                locationActionForm.zipcode.$invalid == false &&
+                                locationActionForm.locality.$invalid == false, 
+               			  'icon-remove tbllocationhasnotcategory marginright10 pull-right': 
+                          		locationActionForm.locationname.$invalid == true || 
+                                locationActionForm.street.$invalid == true || 
+                                locationActionForm.housenr.$invalid == true || 
+                                locationActionForm.zipcode.$invalid == true || 
+                                locationActionForm.locality.$invalid == true}"> 
+            </i>
+        </legend>
+        <div class="well wellservice width700">
+        	<input type="text" ng-hide="'true'" ng-model="addressvalidator">{{
+                }}</input>
+            <div class="input-prepend row-fluid"> <span class="add-on add-on-width">Bezeichnung</span>
+                <input id="locationname" 
+                	   ng-model="myInsertDataArray.locationname" 
+                       class="locationinputwidth-xl" 
+                       type="text" 
+                       name="locationname"
+                       placeholder="Locationname"
+                       required>
+            </div>
+            <div class="input-prepend row-fluid"> <span class="add-on add-on-width">Adresszusatz</span>
+                <input id="additiontoaddress" 
+                	   ng-model="myInsertDataArray.additiontoaddress" 
+                       class="locationinputwidth-xl" 
+                       type="text"
+                       name="additiontoaddress"
+                       placeholder="Adresszusatz"
+                       >
+            </div>
+            <div class="input-prepend row-fluid"> <span class="add-on add-on-width">Strasse</span>
+                <input id="street" 
+                	   ng-model="myInsertDataArray.street" 
+                       class="locationinputwidth-m" 
+                       type="text" 
+                       name="street"
+                       placeholder="Straße"
+                       required>
+                <span class="add-on add-on-width locationinputmarginleft">Haus-Nr.</span>
+                <input id="housenr" 
+                	   ng-model="myInsertDataArray.housenr"
+                       class="locationinputwidth-s"
+                       type="text"
+                       name="housenr"
+                       placeholder="Hausnummer"
+                       required>
+            </div>
+            <div class="input-prepend row-fluid"> <span class="add-on add-on-width">Postleitzahl</span>
+                <input id="zipcode" 
+                	   ng-model="myInsertDataArray.zipcode"
+                       class="locationinputwidth-s"
+                       type="text"
+                       name="zipcode"
+                       placeholder="Postleitzahl"
+                       required>
+                <span class="add-on add-on-width locationinputmarginleft">Ort</span>
+                <input id="locality" 
+                        ng-model="myInsertDataArray.locality" 
+                        class="locationinputwidth-m" 
+                        type="text" 
+                        name="locality"
+                        placeholder="Ortschaft"
+                        required>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="width750">
+		<geodata address="myInsertDataArray"></geodata>
+    </fieldset>
+    <fieldset class="width750">
+		<contact allcontact="arrayAllContact"></contact>
+    </fieldset>
+    <fieldset class="width750">
+        <service allservice="arrayAllService"></service>
+    </fieldset>    
+    <fieldset class="width750" ng-show="categorySelect.ServiceCenter || categorySelect.ServicePoint">
+    	<timetable time="arrayTimetableOpentime" headline="'Öffnungszeiten'"></timetable>
+    </fieldset>
+    <fieldset class="width750" ng-show="categorySelect.Briefkasten">
+		<timetable time="arrayTimetableEmptytime" headline="'Entleerungszeiten'"></timetable>
+    </fieldset>
+    <p></p>
+    <legend class="btn-primary width750">
+        <button ng-disabled="locationActionForm.$invalid" 
+        		ng-hide="update" 
+                class="btn btn-success marginleft3"
+                type="button"
+                ng-click="clickInsertLocation()">Location eintragen</button>
+        <button ng-disabled="locationActionForm.$invalid" 
+        		ng-hide="!update" 
+                class="btn btn-success marginleft3" 
+                type="button" 
+                ng-click="clickUpdateLocation()">Änderungen eintragen</button>
+        <a href="#/locationmanagerAllLocation">
+        	<button class="btn btn-danger marginleft3" ng-click="clickClearForm()" type="button" >zurück zur Hauptübersicht</button>
+        </a>
+    </legend>
+</form>
+
