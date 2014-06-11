@@ -1,0 +1,78 @@
+<div ng-init="initApp('maincontainer','header','footer')"
+  id="gmap_maincontainer"
+  class="clearfix">
+    <div id="header" class="btn-primary">
+    	<h2 class="pull-left">_mygmap Phonegap-Demo</h2>
+    	<button 
+    		ng-click="listView = true"
+    		type="button" 
+    		class="btn btn-primary btn-lg pull-right navbariconcontainer">
+				<span class="glyphicon glyphicon-list navbaricons"></span>
+		</button>
+    	<button
+    		ng-click="listView = false" 
+    		type="button" 
+    		class="btn btn-primary btn-lg pull-right navbariconcontainer">
+				<span class="glyphicon glyphicon-globe navbaricons"></span>
+		</button>
+
+    </div>  
+  	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <gmapfilterbar
+        	geomulti="geocoderMulti"
+         	lfsearchfilter="searchFilter">  
+        </gmapfilterbar>
+        <div ng-show="geocoderMulti.length > 0"class="alert alert-danger">
+        	<p>Bitte wählen Sie eine der angebotenen Adressen aus oder präzisieren Sie die Adresse in der Suchmaske</p>
+            <br />
+           	<p ng-repeat="result in geocoderMulti[0]"><a ng-click="clickSetAddress(result.formatted_address)">{{result.formatted_address}}</a><br /></p>
+        </div>
+        <gmaplocationlist
+        	ng-show="listView == true;"
+        	lffilters="searchFilter"
+        	llalllocation="gmapAllLocation"
+        	llgmapevents="gmapEvents">
+        </gmaplocationlist>    
+    </div>
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+        <div>
+        <div ng-show="showLoader">
+            <p>Bitte warten, die Anwendung empfängt Daten von Google</p>
+            <div class="progress progress-striped active">
+              <div id="progress-bar" class="progress-bar"  role="progressbar" style="width: 0%">
+                lädt
+              </div>
+            </div>
+        </div>
+        <div gmapgooglemap
+        	ng-if="(showDetailView == false) && (listView == false)"
+        	id="bigmapcontainer"
+            height="{{gmapOptionsBigMap}}"
+            latitude="{{llselectedlocation.latitude}}"
+            longitude="{{llselectedlocation.longitude}}"
+            llgmapevents="gmapEvents"
+            geomulti="geocoderMulti"
+            homemarker="homeMarker"
+            lffilters="searchFilter"
+        	llalllocation="gmapAllLocation"
+        	llselectedlocation="gmapSelectedLocation" >   
+        </div>
+        </div>
+        <gmaplocationdetail
+        	ng-if="showDetailView == true && listView == false"
+            llgmapevents="gmapEvents"
+            geomulti="geocoderMulti"
+            homemarker="homeMarker"
+            lffilters="searchFilter"
+         	llalllocation="gmapAllLocation" 
+         	llselectedlocation="gmapSelectedLocation"> 
+        </gmaplocationdetail>
+    </div>
+    <div id="footer" class="btn-primary">No programmers were harmed in the making of this software! Copyright 2014 GNU/GPL</div> 
+</div>
+
+<!-- ONLY TO CHECK WHAT MEDIA QUERY -->
+<div class="device-xs visible-xs"></div>
+<div class="device-sm visible-sm"></div>
+<div class="device-md visible-md"></div>
+<div class="device-lg visible-lg"></div>

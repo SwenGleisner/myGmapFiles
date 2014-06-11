@@ -1,0 +1,138 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+    	<h4 class="panel-title">{{llselectedlocation.locationname}}</h4>
+  	</div>
+  	<div class="panel-body">
+  		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+    		<p class="btn-primary btn-sm">Adresse:</p>
+        	<span
+          	  ng-hide="!(location.additiontoaddress.length > 0)">{{llselectedlocation.additiontoaddress.length}}<br /></span>
+        	<span>{{llselectedlocation.street}} {{llselectedlocation.housenr}}</span><br />
+        	<span>{{llselectedlocation.zipcode}} {{llselectedlocation.locality}}</span>
+            <hr />
+            <div
+              ng-repeat="category in ttCategories"
+              ng-hide="((hideOpenTime == true && category.id == '1') || (hideEmptyTime == true && category.id == '2'))"
+              class="table-responsive table">
+              	<p class="btn-primary btn-sm">{{category.name}}</p>
+            	<table class="loc_detailtable">
+					<thead>
+                    	<tr>
+                        	<th>MO</th>
+                            <th>DI</th>
+                            <th>MI</th>
+                            <th>DO</th>
+                            <th>FR</th>
+                            <th ng-show="(llselectedlocation.timetable | filter:{day:'5',pid_timetablecategory:category.id}).length > 0">SA</th>
+                            <th ng-show="(llselectedlocation.timetable | filter:{day:'6',pid_timetablecategory:category.id}).length > 0">SO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        	<td>
+                            	<p ng-repeat="time in llselectedlocation.timetable | filter:{day:'0',pid_timetablecategory:category.id}:true">
+                                	{{time.from | limitTo: 5}}<br />{{time.to | limitTo: 5}}
+                                </p>
+                            </td>
+                        	<td>
+                            	<p ng-repeat="time in llselectedlocation.timetable | filter:{day:'1',pid_timetablecategory:category.id}:true">
+                                	{{time.from | limitTo: 5}}<br />{{time.to | limitTo: 5}}
+                                </p>
+                            </td>
+                        	<td>
+                            	<p ng-repeat="time in llselectedlocation.timetable | filter:{day:'2',pid_timetablecategory:category.id}:true">
+                                	{{time.from | limitTo: 5}}<br />{{time.to | limitTo: 5}}
+                                </p>
+                            </td>
+                            <td>
+                            	<p ng-repeat="time in llselectedlocation.timetable | filter:{day:'3',pid_timetablecategory:category.id}:true">
+                                	{{time.from | limitTo: 5}}<br />{{time.to | limitTo: 5}}
+                                </p>
+                            </td>
+                            <td>
+                            	<p ng-repeat="time in llselectedlocation.timetable | filter:{day:'4',pid_timetablecategory:category.id}:true">
+                                	{{time.from | limitTo: 5}}<br />{{time.to | limitTo: 5}}
+                                </p>
+                            </td>
+                            <td>
+                            	<p ng-repeat="time in llselectedlocation.timetable | filter:{day:'5',pid_timetablecategory:category.id}:true">
+                                	{{time.from | limitTo: 5}}<br />{{time.to | limitTo: 5}}
+                                </p>
+                            </td>
+                            <td>
+                            	<p ng-repeat="time in llselectedlocation.timetable | filter:{day:'6',pid_timetablecategory:category.id}:true">
+                                    {{time.from | limitTo: 5}}<br />{{time.to | limitTo: 5}}
+                                </p>
+                            </td>
+                        </tr>
+					</tbody>         
+            	</table>
+            </div>
+    	</div>
+    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 well well-sm">
+            <div gmapgooglemap
+            	id="smallmapcontainer"
+                height="325"
+                latitude="{{llselectedlocation.latitude}}"
+                longitude="{{llselectedlocation.longitude}}"
+                llgmapevents="llgmapevents"
+                geomulti="geomulti"
+                homemarker="homemarker"
+                lffilters="lffilters"
+                llalllocation="llalllocation"
+                llselectedlocation="llselectedlocation">   
+            </div>	
+    	</div>
+        <p class="clearfix"></p>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix" ng-hide="llselectedlocation.services.length == 0">
+         	<p class="btn-primary btn-sm">Serviceleistungen:</p>
+            <div ng-hide="llselectedlocation.services.length == 0" class="input-prepend row"> 
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-addon dv_inputgroup btn-default">Kategorie: </span>
+                        <select class="form-control dv_inputgroup btn-default" ng-init="myservicefilter='1'" ng-model="myservicefilter" ng-options="cat.pid_servicecategory as cat.categoryname for cat in servicecategories"></select>
+                    </div>
+                </div>
+            </div>
+            <p class="clearfix"></p>
+            <div ng-hide="(llselectedlocation.services|filter: {pid_servicecategory: myservicefilter, customergroup: 0}).length == 0" 
+                 class="col-xs-12 col-sm-12 col-md-12 col-lg-5 well well-sm">
+                <p class="modalheaderser btn-primary btn-xs">Privatkunden<p>
+                <ul>
+                    <li class="dv_li" ng-repeat="service in llselectedlocation.services | filter: {pid_servicecategory: myservicefilter, customergroup: 0}">{{service.servicename}}</li>	
+                </ul>
+            </div>
+            <div ng-hide="(llselectedlocation.services|filter: {pid_servicecategory: myservicefilter, customergroup: 1}).length == 0"
+                 ng-class="{'col-xs-12 col-sm-12 col-md-12 col-lg-5 well well-sm':
+                 		    (llselectedlocation.services|filter: {pid_servicecategory: myservicefilter, customergroup: 0}).length == 0,
+                            'col-xs-12 col-sm-12 col-md-12 col-lg-5 col-lg-offset-2 well well-sm':
+                 		    (llselectedlocation.services|filter: {pid_servicecategory: myservicefilter, customergroup: 0}).length > 0}"
+                 >
+                <p class="modalheaderser btn-primary btn-xs">Geschäftskunden</p>
+                <ul>
+                    <li class="dv_li" ng-repeat="service in llselectedlocation.services | filter: {pid_servicecategory: myservicefilter, customergroup: 1}">{{service.servicename}}</li>	
+                </ul>  
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
+            <p class="btn-primary btn-sm">Wegbeschreibung:</p>
+            <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Startadresse : {{llselectedlocation.response.routes[0].legs[0].start_address}}</p>
+            <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Zieladresse : {{llselectedlocation.response.routes[0].legs[0].end_address}}</p>
+            <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Entfernung : ca. {{llselectedlocation.response.routes[0].legs[0].distance.text}}</p>
+            <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Fahrtzeit : ca. {{llselectedlocation.response.routes[0].legs[0].duration.text}}</p>
+            <div ng-repeat="step in llselectedlocation.response.routes[0].legs[0].steps" >
+                <span class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >{{step.duration.text}}</span>
+                <span class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >{{step.distance.text}}</span>
+                <span class="col-xs-8 col-sm-8 col-md-8 col-lg-8" ng-bind-html="step.instructions"></span>
+            </div>
+        </div>
+  	</div>
+  	<div class="panel-footer clearfix">
+        <button
+          ng-click="llgmapevents.clickMapView()"
+          type="button" 
+          class="btn btn-primary btn-xs pull-left">
+            <span class="glyphicon glyphicon-map-marker"> </span> Zurück zur Kartenansicht wechseln
+        </button>
+    </div>
+</div>

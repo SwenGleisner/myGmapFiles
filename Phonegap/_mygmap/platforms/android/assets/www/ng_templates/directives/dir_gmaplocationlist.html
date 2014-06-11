@@ -1,0 +1,47 @@
+<!-- gmap LocationList -->
+<div ng-init="init()">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <button
+              ng-init="togglePanel = false" 
+              ng-model="togglePanel"
+              ng-click="togglePanel=!togglePanel"
+              type="button" 
+              class="btn btn-primary btn-xs pull-left">
+            	<span 
+					ng-class="{'glyphicon-circle-arrow-down': 
+            					togglePanel == false , 
+               			  	   'glyphicon-circle-arrow-up': 
+                          		togglePanel == true}"
+                    class="glyphicon">
+                </span>
+            </button>
+            <h4 class="panel-title">Ergebnis: {{(mylength = llalllocation | filter: showLocation).length}} Treffer</h4>
+        </div>
+        <div ng-hide="togglePanel" class="ll_panellist">
+            <div 
+              class="panel-body ">
+                <div class="ll_panel-body clearfix" ng-repeat="location in llalllocation | filter: showLocation | orderBy:'distance'">     
+                    <span ng-show="location.servicecenter" class="pull-right"><img src="images/office-building.png" height="40" width="40"/></span>
+                    <span ng-show="location.servicepoint" class="pull-right"><img src="images/house.png" height="40" width="40" /></span>
+                    <span ng-show="location.briefkasten" class="pull-right"><img src="images/postal.png" height="40" width="40"/></span>
+                    <span class="ll_locationname">{{location.locationname}}</span><br />
+                    <span class="ll_locationaddress">{{location.street}} {{location.housenr}}</span><br />
+                    <span class="ll_locationaddress">{{location.zipcode}} {{location.locality}}</span><br />
+                    <button 
+                      ng-click="llgmapevents.clickSelectLocation(location)"
+                      type="button"
+                      class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </button>
+                    <span 
+                       ng-show="location.distance > 0"
+                       class="roadsign pull-left">
+                        <span class="glyphicon glyphicon-road glyphroad"></span><span class="ll_locationaddress"> {{location.distance}} km</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <paginator></paginator>
+</div>

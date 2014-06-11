@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+    _mygmap Phonegap-Demo
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <!--LOAD JQUERY -->
+        <script type="text/javascript" charset="utf-8" src="js/jquery/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/fastclick.js"></script>
+        <!--LOAD GOOGLE-API -->
+        <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <!--LOAD ANGULAR FRAMEWORK -->
+        <script type="text/javascript" charset="utf-8" src="ng_js/angular/angular.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ng_js/angular/angular-route.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ng_js/angular/angular-sanitize.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ng_js/angular/angular-locale_de-de.js"></script>
+        <!--LOAD ANGULAR APP -->
+        <script type="text/javascript" charset="utf-8" src="ng_js/app.js"></script>
+        <!--LOAD ANGULAR CONTROLLER -->
+        <script type="text/javascript" charset="utf-8" src="ng_js/controller/view_main_controller.js"></script>
+        <!--LOAD ANGULAR SERVICES -->
+        <script type="text/javascript" charset="utf-8" src="ng_js/services/service_gmap_geocoder.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ng_js/services/service_gmap_database.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ng_js/services/service_gmap_paginator.js"></script>
+        <!--LOAD ANGULAR DIRECTIVES -->
+        <script type="text/javascript" charset="utf-8" src="ng_js/directives/directive_gmap_filterbar.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ng_js/directives/directive_gmap_googlemap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ng_js/directives/directive_gmap_locationlist.js"></script>       
+        <script type="text/javascript" charset="utf-8" src="ng_js/directives/directive_gmap_locationdetail.js"></script>
+        <script type="text/javascript" charset="utf-8" src="ng_js/directives/directive_gmap_paginator.js"></script>        
+        <!--LOAD ANGULAR FILTERS -->
+        <script type="text/javascript" charset="utf-8" src="ng_js/filters/filter_gmap_pagination.js"></script>        
+        <title>_mygmap Phonegap-Demo</title>
+    </head>
+    
+    <body>
+        <div class="app" ng-app="mygmapFrontendDemo">
+	        <div id="gmapcontainer" ng-view>MAIN</div>         
+        </div>
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            myapp.initialize();
+        </script>
+    </body>
+</html>
